@@ -116,11 +116,3 @@ This project uses Bitcoin's regtest mode, which has the following characteristic
 2. If you get "Wallet file not specified" errors:
    - Make sure the wallet is enabled in bitcoin.conf
    - Try creating a new wallet: `bitcoin-cli -conf=./bitcoin.conf createwallet "testwallet"`
-
-## Contributing
-
-Feel free to submit issues and enhancement requests!
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details. 
