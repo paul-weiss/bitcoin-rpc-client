@@ -36,45 +36,18 @@ cargo build
 
 ## Configuration
 
-1. Update the credentials in `bitcoin.conf`:
-```conf
-rpcuser=your_username
-rpcpassword=your_password
+1. Setup your bitcoin environment by either downloading or building from source.  Below is how I started a regtest environment.  Change rpcuser and rpcpassword.
+
+```sh
+./bitcoind -regtest -txindex=1 -rpcuser=paul -rpcpassword=changeme
 ```
 
-2. Update the same credentials in `src/main.rs`:
+2. Update the credentials in `src/main.rs` to what you set the rpcuser and rpcpassword in above step:
 ```rust
-Auth::UserPass("your_username".to_string(), "your_password".to_string())
+Auth::UserPass("paul".to_string(), "changeme".to_string())
 ```
 
 ## Usage
-
-1. Start Bitcoin Core in regtest mode:
-```bash
-bitcoind -conf=./bitcoin.conf
-```
-
-2. Generate initial blocks (required for regtest):
-```bash
-bitcoin-cli -conf=./bitcoin.conf generate 101
-```
-
-3. Run the RPC client:
-```bash
-cargo run
-```
-
-## Project Structure
-
-```
-bitcoin-rpc-client/
-├── src/
-│   └── main.rs          # Main application code
-├── regtest-data/        # Bitcoin Core regtest data directory
-├── bitcoin.conf         # Bitcoin Core configuration
-├── Cargo.toml           # Rust project configuration
-└── README.md            # This file
-```
 
 ## Available RPC Calls
 

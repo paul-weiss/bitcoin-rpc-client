@@ -8,16 +8,12 @@ async fn main() -> Result<()> {
     // Connect to Bitcoin Core RPC in regtest mode
     let rpc = Client::new(
         "http://localhost:18443",  // Regtest RPC port
-        Auth::UserPass("your_username".to_string(), "your_password".to_string()),
+        Auth::UserPass("paul".to_string(), "changeme".to_string()),
     )?;
 
     // Get blockchain info
     let blockchain_info = rpc.get_blockchain_info()?;
     println!("Blockchain Info: {:#?}", blockchain_info);
-
-    // Get wallet info
-    let wallet_info = rpc.get_wallet_info()?;
-    println!("Wallet Info: {:#?}", wallet_info);
 
     // Get network info
     let network_info = rpc.get_network_info()?;
@@ -72,6 +68,10 @@ async fn main() -> Result<()> {
     // Get estimated fee
     let estimated_fee = rpc.estimate_smart_fee(6, None)?;
     println!("Estimated Fee: {:#?}", estimated_fee);
+
+    // Get wallet info
+    let wallet_info = rpc.get_wallet_info()?;
+    println!("Wallet Info: {:#?}", wallet_info);
 
     Ok(())
 }
